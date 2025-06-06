@@ -1,0 +1,16 @@
+#!/bin/env bash
+
+javac -d bin \
+  CaseMethod2/*.java \
+  CaseMethod2/bbm/*.java \
+  CaseMethod2/kendaraan/*.java \
+  CaseMethod2/transaksipengisian/*.java
+
+if [ $? -eq 0 ]; then
+    echo "Compilation successful."
+else
+    echo "Compilation failed."
+    exit 1
+fi
+
+java -cp bin CaseMethod2.MainSPBU
