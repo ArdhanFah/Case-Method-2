@@ -39,5 +39,18 @@ public class AntrianTransaksi {
         return size == kapasitas;
     }
 
+    public double totalPendapatan(){
+        double total = 0;
+        int index = front;
+        for(int i = 0; i < size; i++){
+            total += data[index].hitungTotalBayar();
+            index = (index + 1) % kapasitas;
+        }
+        return total;
+    }
+
+    public void tampilkanTotalPendapatan() {
+        System.out.println("Total Pendapatan: " + totalPendapatan());
+    }
 }
 
