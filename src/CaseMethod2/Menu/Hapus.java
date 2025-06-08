@@ -120,13 +120,11 @@ public class Hapus {
 
         NodeKendaraan current = antrianKendaraan.getHead();
 
-        // Check if the node to be deleted is the head
         if (current != null && current.data.platNomor.equalsIgnoreCase(platNomor)) {
             hapusAwal();
             return;
         }
 
-        // Search for the node to be deleted
         while (current != null && !current.data.platNomor.equalsIgnoreCase(platNomor)) {
             current = current.next;
         }
@@ -136,13 +134,11 @@ public class Hapus {
             return;
         }
 
-        // If the node to be deleted is the tail
         if (current.next == null) {
             hapusAkhir();
             return;
         }
 
-        // Delete the node
         current.prev.next = current.next;
         current.next.prev = current.prev;
         System.out.println("Kendaraan dengan plat nomor " + platNomor + " berhasil dihapus!");

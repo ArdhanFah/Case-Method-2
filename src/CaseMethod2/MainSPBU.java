@@ -35,7 +35,9 @@ public class MainSPBU {
                     tambahkan.tambahKendaraan();
                     break;
                 case 2:
-                    tampilkan.tampilkanMenu();
+                    if(antrianKendaraan.isEmpty()) {
+                        System.out.println("Antrian Kendaraan Kosong");
+                    } else { tampilkan.tampilkanMenu(); }
                     break;
                 case 3:
                     System.out.println("Jumlah Antrian Kendaraan: " + antrianKendaraan.jumlahAntrian());
@@ -70,8 +72,10 @@ public class MainSPBU {
                     }
                     break;
                 case 6:
-                    hapus.menuHapus();
-                    break;
+                if(antrianKendaraan.isEmpty()) {
+                    System.out.println("Antrian Kendaraan Kosong");
+                } else { hapus.menuHapus(); }
+                break;
                 case 0:
                     System.out.println("Keluar dari program.");
                     System.exit(0);
