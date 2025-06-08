@@ -22,4 +22,5 @@ public class TransaksiPengisisan {
         System.out.printf("%10s : %10s%n", kendaraan.platNomor, totalBayar);
 
     }
+
 }
