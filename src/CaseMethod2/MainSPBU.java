@@ -44,23 +44,56 @@ public class MainSPBU {
                     break;
                 case 4:
                     if(antrianKendaraan.isEmpty()) {
-                        System.out.println("Antrian Kendaraan Kosong");
-                        break;
+                            System.out.println("Antrian Kendaraan Kosong");
+                            break;
                     } else {
                         Kendaraan dilayani = antrianKendaraan.dequeue();
-                        System.out.println("Kendaraan yang Dilayani:" + dilayani.platNomor);
-                        System.out.print("Masukkan Jenis BBM: ");
-                        String jenisBBM = scanner.nextLine();
-                        System.out.print("Masukkan Harga per Liter: ");
-                        double hargaPerLiter = scanner.nextDouble(); scanner.nextLine(); // Clear the newline character
-                        System.out.print("Masukkan Jumlah Liter: ");
-                        double liter = scanner.nextDouble(); scanner.nextLine(); // Clear the newline character
-                        BBM bbm = new BBM(jenisBBM, hargaPerLiter);
-                        TransaksiPengisisan transaksi = new TransaksiPengisisan(dilayani, bbm, liter);
-                        transaksi.hitungTotalBayar();
-                        antrianTransaksi.enqueue(transaksi);
-                        System.out.println(">> Transaksi berhasil dicatat.");
-                    }
+                        System.out.println("Kendaraan yang Dilayani: " + dilayani.platNomor);
+
+                            System.out.println("Pilih Jenis BBM:");
+                            System.out.println("1. Pertalite (Rp 10.000/liter)");
+                            System.out.println("2. Pertamax  (Rp 13.500/liter)");
+                            System.out.println("3. Turbo     (Rp 15.000/liter)");
+                            System.out.println("4. Solar     (Rp 8.500/liter)");
+                            System.out.print("Pilih BBM [1-4]: ");
+                            int pilihBBM = scanner.nextInt(); scanner.nextLine();
+
+                            String jenisBBM = "";
+                            double hargaPerLiter = 0;
+                            switch (pilihBBM) {
+                                case 1:
+                                    jenisBBM = "Pertalite";
+                                    hargaPerLiter = 10000;
+                                    break;
+                                case 2:
+                                    jenisBBM = "Pertamax";
+                                    hargaPerLiter = 13500;
+                                    break;
+                                case 3:
+                                    jenisBBM = "Turbo";
+                                    hargaPerLiter = 15000;
+                                    break;
+                                case 4:
+                                    jenisBBM = "Solar";
+                                    hargaPerLiter = 8500;
+                                    break;
+                                default:
+                                    System.out.println("Pilihan BBM tidak valid!");
+                                    // Kembalikan kendaraan ke antrian jika gagal
+                                    antrianKendaraan.enqueue(dilayani);
+                                    break;
+                            }
+                            if (hargaPerLiter == 0) break;
+
+                            System.out.print("Masukkan Jumlah Liter: ");
+                            double liter = scanner.nextDouble(); scanner.nextLine();
+
+                            BBM bbm = new BBM(jenisBBM, hargaPerLiter);
+                            TransaksiPengisisan transaksi = new TransaksiPengisisan(dilayani, bbm, liter);
+                            transaksi.hitungTotalBayar();
+                            antrianTransaksi.enqueue(transaksi);
+                            System.out.println(">> Transaksi berhasil dicatat.");
+                        }
                     break;
                 case 5:
                     if(antrianTransaksi.isEmpty()) {

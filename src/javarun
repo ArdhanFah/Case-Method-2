@@ -4,7 +4,8 @@ javac -d bin \
   CaseMethod2/*.java \
   CaseMethod2/bbm/*.java \
   CaseMethod2/kendaraan/*.java \
-  CaseMethod2/transaksipengisian/*.java
+  CaseMethod2/transaksipengisian/*.java \
+  CaseMethod2/menu/*.java
 
 if [ $? -eq 0 ]; then
     echo "Compilation successful."
