@@ -22,7 +22,11 @@ src/
 │ ├───TransaksiPengisian/ # Struktur dan data transaksi SPBU
 │ │ ├───TransaksiPengisisan.java
 │ │ └───AntrianTransaksi.java
-│ └───MainMainSPBU.java # Main class dengan menu interaktif 
+│ ├───Menu/ # Struktur dan antrian kendaraan (Tampil, Hapus, Tambah)
+│ │ ├───Tampilkan.java
+│ │ ├───Hapus.java
+│ │ └───Tambahkan.java
+│ └───MainSPBU.java # Main class dengan menu interaktif 
 ├───javarun
 ```
 
@@ -40,6 +44,12 @@ Mengelola antrian kendaraan dengan Double Linked List:
 Mencatat transaksi pengisian BBM:
 - `TransaksiPengisisan.java`: Menyimpan detail pengisian per kendaraan.
 - `AntrianTransaksi.java`: Menyimpan riwayat transaksi dengan circular queue.
+
+### `CaseMethod2.Menu`
+Modularisasi fitur-fitur utama:
+- `Tambahkan.java`: Input dan tambah kendaraan ke antrian.
+- `Tampilkan.java`: Menampilkan data antrian kendaraan.
+- `Hapus.java`: Menghapus kendaraan dari antrian kendaraan.
 
 Main class berbasis CLI yang:
 - Menampilkan menu.
