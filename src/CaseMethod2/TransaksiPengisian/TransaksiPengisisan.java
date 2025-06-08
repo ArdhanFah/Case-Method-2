@@ -14,8 +14,9 @@ public class TransaksiPengisisan {
         this.liter = liter;
     }
 
-    public void hitungTotalBayar() {
+    public double hitungTotalBayar() {
         totalBayar = liter * bbm.hargaPerLiter;
+        return totalBayar;
     }
 
     public void tampilkanTransaksi() {

@@ -69,6 +69,7 @@ public class MainSPBU {
                         System.out.println("=== Riwayat Transaksi Pengisian BBM ===");
                         System.out.println("Daftar Transaksi:");
                         antrianTransaksi.tampil();
+                        antrianTransaksi.tampilkanTotalPendapatan();
                     }
                     break;
                 case 6:
