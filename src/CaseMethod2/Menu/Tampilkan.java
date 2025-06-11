@@ -8,14 +8,17 @@ public class Tampilkan {
     private Scanner scanner = new Scanner(System.in);
     private AntrianKendaraan antrianKendaraan;
 
+    // Konstruktor untuk menginisialisasi objek Tampilkan dengan antrian kendaraan
     public Tampilkan(AntrianKendaraan antrianKendaraan) {
         this.antrianKendaraan = antrianKendaraan;
     }
 
+    // Metode untuk memeriksa apakah antrian kendaraan kosong
     private boolean isEmpty() {
         return antrianKendaraan.getHead() == null;
     }
 
+    // Metode untuk menampilkan kendaraan di antrian
     private void tampilkanFirst() {
         NodeKendaraan head = antrianKendaraan.getHead();
         if (!isEmpty()) {
@@ -26,6 +29,7 @@ public class Tampilkan {
         }
     }
 
+    // Metode untuk menampilkan kendaraan terakhir di antrian
     private void tampilkanLast() {
         NodeKendaraan tail = antrianKendaraan.getTail();
         if (tail != null) {
@@ -36,6 +40,7 @@ public class Tampilkan {
         }
     }
 
+    // Metode untuk menampilkan kendaraan berdasarkan index
     private void tampilkanByIndex() {
         NodeKendaraan head = antrianKendaraan.getHead();
         if (isEmpty()) {
@@ -59,6 +64,7 @@ public class Tampilkan {
         System.out.println("Index tidak ditemukan dalam antrian.");
     }
 
+    // Metode untuk menampilkan menu tampilan antrian kendaraan
     public void tampilkanMenu() {
         System.out.println("\n=== Menu Tampilkan ===");
         System.out.println("1. Tampilkan Antrian Kendaraan");

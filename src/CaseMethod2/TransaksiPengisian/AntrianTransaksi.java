@@ -4,6 +4,7 @@ public class AntrianTransaksi {
     private TransaksiPengisisan[] data;
     private int front, rear, size, kapasitas;
 
+    // Konstruktor untuk menginisialisasi antrian transaksi
     public AntrianTransaksi(int kapasitas) {
         this.kapasitas = kapasitas;
         this.data = new TransaksiPengisisan[kapasitas];
@@ -12,8 +13,19 @@ public class AntrianTransaksi {
         this.size = 0;
     }
 
+    // Getter untuk mendapatkan ukuran antrian
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    // Method untuk mengecek apakah antrian penuh
+    public boolean isFull(){
+        return size == kapasitas;
+    }
+
+    // Method untuk mendapatkan ukuran antrian
     public void enqueue(TransaksiPengisisan tr){
-        if(size == kapasitas){
+        if(isFull()){
             System.out.println("Antrian Penuh");
             return;
         }
@@ -23,6 +35,7 @@ public class AntrianTransaksi {
         size++;
     }
 
+    // Method untuk mengeluarkan transaksi dari antrian
     public void tampil(){
         int index = front;
         for(int i = 0; i< size; i++){
@@ -31,14 +44,7 @@ public class AntrianTransaksi {
         }
     }
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    public boolean isFull(){
-        return size == kapasitas;
-    }
-
+    // Method untuk mengeluarkan transaksi dari antrian
     public double totalPendapatan(){
         double total = 0;
         int index = front;
@@ -49,6 +55,7 @@ public class AntrianTransaksi {
         return total;
     }
 
+    // Method untuk menampilkan total pendapatan dari semua transaksi
     public void tampilkanTotalPendapatan() {
         System.out.println("Total Pendapatan: " + totalPendapatan());
     }

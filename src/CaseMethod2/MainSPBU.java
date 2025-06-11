@@ -1,125 +1,21 @@
 package CaseMethod2;
-import CaseMethod2.BBM.BBM;
-import CaseMethod2.Kendaraan.AntrianKendaraan;
-import CaseMethod2.Kendaraan.Kendaraan;
-import CaseMethod2.Menu.Tambahkan;
-import CaseMethod2.Menu.Tampilkan;
-import CaseMethod2.Menu.Hapus;
-import CaseMethod2.TransaksiPengisian.*;
 import java.util.Scanner;
 
-public class MainSPBU {
+import CaseMethod2.Menu.MainMenu;
 
+public class MainSPBU {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        AntrianKendaraan antrianKendaraan = new AntrianKendaraan();
-        AntrianTransaksi antrianTransaksi = new AntrianTransaksi(10);
-        Tambahkan tambahkan = new Tambahkan(antrianKendaraan);
-        Tampilkan tampilkan = new Tampilkan(antrianKendaraan);
-        Hapus hapus = new Hapus(antrianKendaraan);
+        MainMenu mainMenu = new MainMenu();
         int pilihan;
 
         do {
-            System.out.println("=== Menu SPBU ===");
-            System.out.println("1. Tambah Antrian Kendaraan");
-            System.out.println("2. Tampilkan Antrian");
-            System.out.println("3. Cek jumlah Antrian Kendaraan");
-            System.out.println("4. Proses Pengisian BBM");
-            System.out.println("5. Tampilkan Riwayat Transaksi");
-            System.out.println("6. Hapus Kendaraan");
-            System.out.println("0. Keluar");
-            System.out.print("Pilih menu: ");
-            pilihan = scanner.nextInt(); scanner.nextLine(); // Clear the newline character
-            switch (pilihan) {
-                case 1:
-                    tambahkan.tambahKendaraan();
-                    break;
-                case 2:
-                    if(antrianKendaraan.isEmpty()) {
-                        System.out.println("Antrian Kendaraan Kosong");
-                    } else { tampilkan.tampilkanMenu(); }
-                    break;
-                case 3:
-                    System.out.println("Jumlah Antrian Kendaraan: " + antrianKendaraan.jumlahAntrian());
-                    break;
-                case 4:
-                    if(antrianKendaraan.isEmpty()) {
-                            System.out.println("Antrian Kendaraan Kosong");
-                            break;
-                    } else {
-                        Kendaraan dilayani = antrianKendaraan.dequeue();
-                        System.out.println("Kendaraan yang Dilayani: " + dilayani.platNomor);
-
-                            System.out.println("Pilih Jenis BBM:");
-                            System.out.println("1. Pertalite (Rp 10.000/liter)");
-                            System.out.println("2. Pertamax  (Rp 13.500/liter)");
-                            System.out.println("3. Turbo     (Rp 15.000/liter)");
-                            System.out.println("4. Solar     (Rp 8.500/liter)");
-                            System.out.print("Pilih BBM [1-4]: ");
-                            int pilihBBM = scanner.nextInt(); scanner.nextLine();
-
-                            String jenisBBM = "";
-                            double hargaPerLiter = 0;
-                            switch (pilihBBM) {
-                                case 1:
-                                    jenisBBM = "Pertalite";
-                                    hargaPerLiter = 10000;
-                                    break;
-                                case 2:
-                                    jenisBBM = "Pertamax";
-                                    hargaPerLiter = 13500;
-                                    break;
-                                case 3:
-                                    jenisBBM = "Turbo";
-                                    hargaPerLiter = 15000;
-                                    break;
-                                case 4:
-                                    jenisBBM = "Solar";
-                                    hargaPerLiter = 8500;
-                                    break;
-                                default:
-                                    System.out.println("Pilihan BBM tidak valid!");
-                                    // Kembalikan kendaraan ke antrian jika gagal
-                                    antrianKendaraan.enqueue(dilayani);
-                                    break;
-                            }
-                            if (hargaPerLiter == 0) break;
-
-                            System.out.print("Masukkan Jumlah Liter: ");
-                            double liter = scanner.nextDouble(); scanner.nextLine();
-
-                            BBM bbm = new BBM(jenisBBM, hargaPerLiter);
-                            TransaksiPengisisan transaksi = new TransaksiPengisisan(dilayani, bbm, liter);
-                            transaksi.hitungTotalBayar();
-                            antrianTransaksi.enqueue(transaksi);
-                            System.out.println(">> Transaksi berhasil dicatat.");
-                        }
-                    break;
-                case 5:
-                    if(antrianTransaksi.isEmpty()) {
-                        System.out.println("Tidak ada transaksi yang tercatat.");
-                    } else {
-                        System.out.println("=== Riwayat Transaksi Pengisian BBM ===");
-                        System.out.println("Daftar Transaksi:");
-                        antrianTransaksi.tampil();
-                        antrianTransaksi.tampilkanTotalPendapatan();
-                    }
-                    break;
-                case 6:
-                if(antrianKendaraan.isEmpty()) {
-                    System.out.println("Antrian Kendaraan Kosong");
-                } else { hapus.menuHapus(); }
-                break;
-                case 0:
-                    System.out.println("Keluar dari program.");
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Pilihan tidak valid!");
-                    break;
-            }
-        }while (pilihan != 0); 
-        scanner.close();
+            mainMenu.tampilkanMenu(); // Menu Utama
+            pilihan = scanner.nextInt(); scanner.nextLine();
+            mainMenu.prosesMenu(pilihan); // Switch Case unutk pilihan menu
+        } while (pilihan != 0);
+        
+        scanner.close(); // Scanner Main Close 
+        mainMenu.closeScanner(); // Scanner mainMenu Close. Supaya pada saat input data pada mainMenu Scanner tidak langsung menutup.
     }
-    
 }

@@ -8,10 +8,12 @@ public class Tambahkan {
     private Scanner scanner = new Scanner(System.in);
     AntrianKendaraan antrianKendaraan;
 
+    // Konstruktor untuk menginisialisasi objek Tambahkan dengan antrian kendaraan
     public Tambahkan(AntrianKendaraan antrianKendaraan) {
         this.antrianKendaraan = antrianKendaraan;
     }
 
+    // Metode untuk mengambil input kendaraan dari pengguna
     private Kendaraan inputKendaraan() {
         System.out.print("Masukkan Plat Nomor:  ");
         String plat = scanner.nextLine();
@@ -22,6 +24,7 @@ public class Tambahkan {
         return new Kendaraan(plat, jenis, merk);
     }
 
+    // Metode untuk menambahkan kendaraan ke antrian
     public void tambahKendaraan() {
         System.out.println("=== Tambah Kendaraan ===");
         System.out.println("1. Tambah Kendaraan");

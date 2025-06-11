@@ -4,26 +4,32 @@ public class AntrianKendaraan {
     private NodeKendaraan head;
     private NodeKendaraan tail;
 
+    // Konstruktor untuk menginisialisasi antrian kendaraan
     public NodeKendaraan getHead() {
         return head;
     }
 
+    // Setter untuk mengatur head antrian
     public void setHead(NodeKendaraan head) {
         this.head = head;
     }
 
+    // Getter dan setter untuk tail antrian
     public NodeKendaraan getTail() {
         return tail;
     }
 
+    // Setter untuk mengatur tail antrian
     public void setTail(NodeKendaraan tail) {
         this.tail = tail;
     }
 
+    // Konstruktor untuk menginisialisasi antrian kendaraan
     public boolean isEmpty() {
         return head == null;
     }
 
+    // Method untuk mengecek apakah antrian kosong
     public void enqueue(Kendaraan kendaraan) {
         NodeKendaraan newNode = new NodeKendaraan(kendaraan);
         if (isEmpty()) {
@@ -35,6 +41,7 @@ public class AntrianKendaraan {
         }
     }
 
+    // Method untuk menambahkan kendaraan ke antrian
     public void addFirst(Kendaraan kendaraan) {
         NodeKendaraan newNode = new NodeKendaraan(kendaraan);
         if (isEmpty()) {

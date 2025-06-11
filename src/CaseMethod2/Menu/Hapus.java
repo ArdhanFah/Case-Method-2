@@ -8,11 +8,13 @@ public class Hapus {
     private AntrianKendaraan antrianKendaraan;
     private Scanner scanner;
 
+    // Konstruktor untuk menginisialisasi objek Hapus dengan antrian kendaraan
     public Hapus(AntrianKendaraan antrianKendaraan) {
         this.antrianKendaraan = antrianKendaraan;
         this.scanner = new Scanner(System.in);
     }
 
+    // Method untuk menampilkan menu hapus kendaraan
     public void menuHapus() {
         int pilihan;
 
@@ -48,6 +50,7 @@ public class Hapus {
 
     }
 
+    // Metode untuk menghapus kendaraan dari antrian
     private void hapusAwal() {
         if (antrianKendaraan.isEmpty()) {
             System.out.println("Antrian kosong!");
@@ -57,6 +60,7 @@ public class Hapus {
         System.out.println("Kendaraan di awal antrian berhasil dihapus!");
     }
 
+    // Metode untuk menghapus kendaraan dari akhir antrian
     private void hapusAkhir() {
         if (antrianKendaraan.isEmpty()) {
             System.out.println("Antrian kosong!");
@@ -74,6 +78,7 @@ public class Hapus {
         System.out.println("Kendaraan di akhir antrian berhasil dihapus!");
     }
 
+    // Metode untuk menghapus kendaraan berdasarkan index atau plat nomor
     private void hapusByIndex() {
         if (antrianKendaraan.isEmpty()) {
             System.out.println("Antrian kosong!");
@@ -109,6 +114,7 @@ public class Hapus {
         System.out.println("Kendaraan pada index " + index + " berhasil dihapus!");
     }
 
+    // Metode untuk menghapus kendaraan berdasarkan plat nomor
     private void hapusByPlat() {
         if (antrianKendaraan.isEmpty()) {
             System.out.println("Antrian kosong!");
